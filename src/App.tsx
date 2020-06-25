@@ -1,8 +1,9 @@
 /** Imports */
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
+import Body from "./Body/Body";
 
 /** Main application component */
 function App() {
@@ -11,7 +12,7 @@ function App() {
   return (
     <>
       <Header appName={appName}></Header>
-      <div></div>
+      <Body></Body>
       <Footer appName={appName}></Footer>
     </>
   );
