@@ -2,7 +2,7 @@
 import React from "react";
 import "./Footer.css";
 
-/** Main application component */
+/** Footer component */
 function Footer({ appName }: { appName: string }) {
   return (
     <div>
