@@ -1,0 +1,26 @@
+.input-box {
+    background-color: #060b14;
+    color: white;
+    border: none;
+    font-size: 32px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.input-container {
+    display: inline-block;
+}
+
+.input-label {
+    padding: 5px;
+    color: white;
+}
+
+.riot-input-id {
+
+}
+
+.tag-input-box {
+    width: 100px;
+}
