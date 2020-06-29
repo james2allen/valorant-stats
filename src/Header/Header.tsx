@@ -5,11 +5,7 @@ import "./Header.scss";
 /** Header application component */
 function Header({ appName }: { appName: string }) {
   function convertAppName(appName: string) {
-    let appHeader = appName
-      .split(" ")
-      .map((word) => word.toUpperCase())
-      .join("_");
-    return `_${appHeader}`;
+    return appName.toUpperCase();
   }
   return (
     <div className='col-md-12 header-container'>
