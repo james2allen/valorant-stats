@@ -2,23 +2,19 @@
     background-color: #060b14;
     color: white;
     border: none;
-    font-size: 32px;
+    font-size: 24px;
     &:focus {
         outline: none;
     }
 }
 
+label {
+    color: white;
+    margin-right: 5px;
+}
+
 .input-container {
     display: inline-block;
-}
-
-.input-label {
-    padding: 5px;
-    color: white;
-}
-
-.riot-input-id {
-
 }
 
 .tag-input-box {
