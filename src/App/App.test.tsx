@@ -1,9 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+/** Imports */
+import React from "react";
+import App from "./App";
+import { shallow } from "enzyme";
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App component", () => {
+  test("it renders the Body component with a background image", () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find("Header")).toBeTruthy();
+    expect(wrapper.find("Footer")).toBeTruthy();
+    expect(wrapper.find("Body")).toBeTruthy();
+  });
 });
