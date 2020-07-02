@@ -36,6 +36,7 @@ class SearchBox extends Component {
     return true;
   };
 
+  /** Updates every time the user enters new characters into the riot id string */
   onHandleNameChange = (event: string) => {
     const splitId = event.split("#");
     if (this.isIdValid(splitId)) {
@@ -47,7 +48,7 @@ class SearchBox extends Component {
     return (
       <>
         <div className='col-md-5 input-container'>
-          <label htmlFor='riotId'>Riot ID</label>
+          <label htmlFor='riotId'>Enter Riot ID</label>
           <input
             className='input-box'
             type='text'

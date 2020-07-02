@@ -1,8 +1,11 @@
 import React from "react";
-import { render } from "@testing-library/react";
 import Header from "./Header";
+import { shallow } from "enzyme";
+import expect from "expect";
 
-test("renders header", () => {
-  const { getByText } = render(<Header appName='test app' />);
-  expect(getByText).toBeInTheDocument();
+describe("Header component", () => {
+  test("it renders the Header component with capitalized text", () => {
+    const wrapper = shallow(<Header appName='test app' />);
+    expect(wrapper.find("h1").text()).toEqual("TEST APP");
+  });
 });
