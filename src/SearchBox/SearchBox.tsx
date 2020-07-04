@@ -1,6 +1,7 @@
 /** Imports */
 import React, { Component } from "react";
 import "./SearchBox.scss";
+import isIdValid from "./Validation";
 
 /** Interfaces */
 interface Props {
@@ -20,26 +21,10 @@ class SearchBox extends Component {
     this.onHandleNameChange = this.onHandleNameChange.bind(this);
   }
 
-  /** Checks to see if the user has entered in a valid riot id format */
-  isIdValid = (idArray: string[]) => {
-    const idRegex = /([A-Za-z\s]+)/;
-    const tagRegex = /([A-Z0-9]{3,5})/;
-
-    if (idArray.length !== 2) {
-      return false;
-    }
-
-    if (!idArray[0].match(idRegex) || !idArray[1].match(tagRegex)) {
-      return false;
-    }
-
-    return true;
-  };
-
   /** Updates every time the user enters new characters into the riot id string */
   onHandleNameChange = (event: string) => {
     const splitId = event.split("#");
-    if (this.isIdValid(splitId)) {
+    if (isIdValid(event)) {
       return false;
     }
   };
