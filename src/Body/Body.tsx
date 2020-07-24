@@ -1,6 +1,6 @@
 /** Imports */
 import React from "react";
-import SearchBox from "../SearchBox/SearchBox";
+import { SearchBox } from "../SearchBox/SearchBox";
 import valorantBg from "../common/images/valorant.jpg";
 import "./Body.scss";
 
