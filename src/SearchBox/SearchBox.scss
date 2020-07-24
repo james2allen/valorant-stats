@@ -2,7 +2,11 @@
     background-color: #060b14;
     color: white;
     border: none;
-    font-size: 24px;
+    font-size: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    width: 60%;
+
     &:focus {
         outline: none;
     }
@@ -17,6 +21,6 @@ label {
     display: inline-block;
 }
 
-.tag-input-box {
-    width: 100px;
+.errorMsg {
+    color: red;
 }

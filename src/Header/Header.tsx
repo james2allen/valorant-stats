@@ -2,8 +2,11 @@
 import React from "react";
 import "./Header.scss";
 
-/** Header application component */
-function Header({ appName }: { appName: string }) {
+interface HeaderItemProps {
+  appName: string;
+}
+
+function Header({ appName }: HeaderItemProps) {
   function convertAppName(appName: string) {
     return appName.toUpperCase();
   }

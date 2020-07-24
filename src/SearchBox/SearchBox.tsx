@@ -1,49 +1,53 @@
 /** Imports */
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBox.scss";
-import isIdValid from "./Validation";
+import { isValidId } from "./Validation";
 
-/** Interfaces */
-interface Props {
-  riotId: string;
-  tag: string;
+enum errorMessages {
+  NOT_FOUND = "Could not find user, please try a different name and tag combination.",
+  BAD_GATEWAY = "",
+  INVALID_CHARACTERS = "You have entered an invalid character in the searchbox",
+  INVALID_FORMAT = `The format of the id you have entered is invalid, please follow the format: Name#123`,
 }
 
-/** Name Search application component */
-class SearchBox extends Component {
-  constructor(props: Props) {
-    super(props);
+export const SearchBox = () => {
+  const [riotId, setRiotId] = useState("");
+  useEffect(() => {
+    const [name, tag] = riotId.split("#");
 
-    this.state = {
-      riotId: "",
-      tag: "",
-    };
-    this.onHandleNameChange = this.onHandleNameChange.bind(this);
-  }
+    console.log(name);
+    console.log(tag);
+  });
 
-  /** Updates every time the user enters new characters into the riot id string */
-  onHandleNameChange = (event: string) => {
-    const splitId = event.split("#");
-    if (isIdValid(event)) {
-      return false;
-    }
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const setNameAndTag = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRiotId(event?.target?.value);
   };
 
-  render() {
-    return (
-      <>
-        <div className='col-md-5 input-container'>
-          <label htmlFor='riotId'>Enter Riot ID</label>
-          <input
-            className='input-box'
-            type='text'
-            id='riotId'
-            placeholder='e.g. Walls#7777'
-          />
-        </div>
-      </>
-    );
-  }
-}
+  const fetchAccountData = () => {
+    if (!isValidId(riotId)) {
+      setErrorMsg(errorMessages.INVALID_FORMAT);
+      // set error code here
+      return;
+    }
 
-export default SearchBox;
+    setErrorMsg("");
+  };
+
+  return (
+    <>
+      <div className='col-md-12 input-container'>
+        <input
+          className='input-box'
+          type='text'
+          id='riotId'
+          placeholder='Enter Riot ID (e.g. Walls#7777)'
+          onChange={setNameAndTag}
+        />
+        <button onClick={fetchAccountData}></button>
+        <div className='errorMsg'>{errorMsg}</div>
+      </div>
+    </>
+  );
+};
