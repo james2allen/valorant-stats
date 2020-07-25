@@ -1,7 +1,10 @@
 /** Imports */
 import React, { useState, useEffect } from "react";
+import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import "./SearchBox.scss";
 import { isValidId } from "./Validation";
+import { RegionSelect } from "./RegionSelect";
+import { getAccount } from "../Api/Api";
 
 enum errorMessages {
   NOT_FOUND = "Could not find user, please try a different name and tag combination.",
@@ -13,40 +16,34 @@ enum errorMessages {
 export const SearchBox = () => {
   const [riotId, setRiotId] = useState("");
   useEffect(() => {
-    const [name, tag] = riotId.split("#");
-
-    console.log(name);
-    console.log(tag);
+    getAccount(riotId).then(() => {});
   });
 
+  const [state, setState] = useState({ isLoading: false, options: [] });
   const [errorMsg, setErrorMsg] = useState("");
 
-  const setNameAndTag = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRiotId(event?.target?.value);
-  };
-
-  const fetchAccountData = () => {
+  const fetchAccountData = (query: string) => {
     if (!isValidId(riotId)) {
       setErrorMsg(errorMessages.INVALID_FORMAT);
       // set error code here
       return;
     }
 
+    setState({ isLoading: true, options: [] });
+    setRiotId(query);
     setErrorMsg("");
   };
 
   return (
     <>
       <div className='col-md-12 input-container'>
-        <input
-          className='input-box'
-          type='text'
-          id='riotId'
+        <RegionSelect></RegionSelect>
+        <AsyncTypeahead
           placeholder='Enter Riot ID (e.g. Walls#7777)'
-          onChange={setNameAndTag}
+          isLoading={state.isLoading}
+          onSearch={fetchAccountData}
+          options={state.options}
         />
-        <button onClick={fetchAccountData}></button>
-        <div className='errorMsg'>{errorMsg}</div>
       </div>
     </>
   );
