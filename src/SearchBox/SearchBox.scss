@@ -1,12 +1,36 @@
-label {
-    color: white;
-    margin-right: 5px;
-}
+@import "../Styles/variables.scss";
 
 .input-container {
-    display: inline-block;
+    position: absolute;
+    display: flex;
+    top: 30%;
+    width: 100%;
+    z-index: 4000;
+    width: 70vw;
+    padding: 20px;
+    background-color: $dark-sienna;
+    opacity: 1;
+    border-radius: 10px;
 }
 
-.errorMsg {
-    color: red;
+.rbt {
+    width: 100%;
+}
+
+.dropdown-toggle.btn.btn-primary {
+    background-color: $cerise;
+    border-color: $cerise;
+    &:hover {
+        background-color: $cerise;
+        border-color: $cerise;
+    }
+    &:active {
+        background-color: $cerise !important;
+        border-color: $claret !important;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem $claret !important;
+        background-color: $cerise !important;
+        border-color: $claret !important;
+    }
 }

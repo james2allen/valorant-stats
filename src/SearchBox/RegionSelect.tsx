@@ -26,7 +26,7 @@ export const RegionSelect = () => {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle variant='secondary' id='dropdown-basic'>
+      <Dropdown.Toggle variant='primary' id='dropdown-basic'>
         {locale}
       </Dropdown.Toggle>
       <Dropdown.Menu>{DropdownItems}</Dropdown.Menu>

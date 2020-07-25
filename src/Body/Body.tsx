@@ -1,7 +1,7 @@
 /** Imports */
 import React from "react";
 import { SearchBox } from "../SearchBox/SearchBox";
-import ValorantBg from "../Images/valorant.jpg";
+import ValorantBg from "../Images/valorant.png";
 import "./Body.scss";
 
 /** Body component */
@@ -11,10 +11,7 @@ function Body() {
       <div className='container'>
         <SearchBox></SearchBox>
       </div>
-      <img
-        src={ValorantBg}
-        style={{ width: "100%", height: "auto", opacity: 0.7 }}
-      />
+      <img src={ValorantBg} className='image' />
     </div>
   );
 }
