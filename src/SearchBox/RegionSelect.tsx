@@ -3,23 +3,25 @@ import React, { useState } from "react";
 import "./SearchBox.scss";
 import { Dropdown } from "react-bootstrap";
 
-export const RegionSelect = () => {
-  const [locale, setLocale] = useState("NA1");
+export enum Regions {
+  NA1 = "NA1",
+  BR1 = "BR1",
+  EUW1 = "EUW1",
+  EUN1 = "EUN1",
+  JP1 = "JP1",
+  KR = "KR",
+  LA1 = "LA1",
+  LA2 = "LA2",
+  OC1 = "OC1",
+  TR1 = "TR1",
+  RU = "RU",
+}
 
-  const DropdownItems = [
-    "BR1",
-    "EUN1",
-    "EUW1",
-    "JP1",
-    "KR",
-    "LA1",
-    "LA2",
-    "NA1",
-    "OC1",
-    "TR1",
-    "RU",
-  ].map((region, index) => (
-    <Dropdown.Item key={index} onClick={() => setLocale(region)}>
+export const RegionSelect = () => {
+  const [locale, setLocale] = useState(Regions.NA1);
+
+  const DropdownItems = Object.values(Regions).map((region) => (
+    <Dropdown.Item key={region} onClick={() => setLocale(region)}>
       {region}
     </Dropdown.Item>
   ));
