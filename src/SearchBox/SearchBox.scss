@@ -8,7 +8,7 @@
     z-index: 4000;
     width: 70vw;
     padding: 20px;
-    background-color: $dark-sienna;
+    background-color: $aubergine;
     opacity: 1;
     border-radius: 10px;
 }
@@ -18,19 +18,13 @@
 }
 
 .dropdown-toggle.btn.btn-primary {
-    background-color: $cerise;
-    border-color: $cerise;
-    &:hover {
-        background-color: $cerise;
-        border-color: $cerise;
-    }
+    background-color: $cerise !important;
+    border-color: $cerise !important;
     &:active {
         background-color: $cerise !important;
         border-color: $claret !important;
     }
     &:focus {
         box-shadow: 0 0 0 0.2rem $claret !important;
-        background-color: $cerise !important;
-        border-color: $claret !important;
     }
 }
