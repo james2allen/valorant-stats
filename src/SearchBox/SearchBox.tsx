@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import "./SearchBox.scss";
 import { isValidId } from "./Validation";
-import { RegionSelect } from "./RegionSelect";
 import { getAccount } from "../Api/Api";
 
 enum errorMessages {
@@ -46,7 +45,6 @@ export const SearchBox = () => {
   return (
     <>
       <div className='col-md-12 input-container'>
-        <RegionSelect></RegionSelect>
         <AsyncTypeahead
           id='searchRiotId'
           placeholder='Enter Riot ID (e.g. Walls#7777)'
