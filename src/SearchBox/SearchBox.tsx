@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import "./SearchBox.scss";
 import { isValidId } from "./Validation";
-import { getAccount } from "../Api/Api";
+import { getPuuid } from "../Api/Api";
 
 enum errorMessages {
   NOT_FOUND = "Could not find user, please try a different name and tag combination.",
@@ -16,22 +16,29 @@ interface AsyncTypeaheadProps<T> {
   options: T[];
 }
 
-interface UserAccount {}
-
 export const SearchBox = () => {
   const [riotId, setRiotId] = useState("");
-  const [state, setState] = useState<AsyncTypeaheadProps<UserAccount>>({
+  const [state, setState] = useState<AsyncTypeaheadProps<string>>({
     isLoading: false,
     options: [],
   });
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    getAccount(riotId).then(() => {});
-  });
+    getPuuid(riotId).then((response) => {
+      if (!response) {
+        setState({ isLoading: false, options: [] });
+      }
+
+      setState({
+        isLoading: false,
+        options: [`${response?.gameName}#${response?.tagLine}`],
+      });
+    });
+  }, [riotId]);
 
   const fetchAccountData = (query: string) => {
-    if (!isValidId(riotId)) {
+    if (!isValidId(query)) {
       setErrorMsg(errorMessages.INVALID_FORMAT);
       // set error code here
       return;

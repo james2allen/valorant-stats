@@ -1,7 +1,15 @@
-export const getAccount = (riotId: string): Promise<any> => {
-  const [id, tag] = riotId.split("#");
+export const getPuuid = (
+  riotId: string
+): Promise<{ gameName: string; tagLine: string; puuid: string }> => {
+  const [gameName, tagLine] = riotId.split("#");
 
   return fetch(
-    `https://api.github.com/search/users?query=${riotId}`
-  ).then((resp) => resp.json());
+    `https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${stringifyGameName(
+      gameName
+    )}/${tagLine}?api_key=${process.env.REACT_APP_RIOT_API_KEY}`
+  ).then((result) => result.json());
+};
+
+const stringifyGameName = (gameName: string) => {
+  return gameName.split(" ").join("%20");
 };
