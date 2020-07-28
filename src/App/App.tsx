@@ -1,9 +1,10 @@
 /** Imports */
 import React from "react";
 import "./App.scss";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
-import Body from "../Body/Body";
+import Footer from "../Components/Footer";
+import SearchPage from "../Pages/SearchPage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MatchList from "../Pages/MatchList";
 
 /** Main application component */
 function App() {
@@ -11,8 +12,11 @@ function App() {
 
   return (
     <>
-      <Header appName={appName}></Header>
-      <Body></Body>
+      <Router forceRefresh={true}>
+        <Switch>
+          <Route exact path='/' component={SearchPage}></Route>
+        </Switch>
+      </Router>
       <Footer appName={appName}></Footer>
     </>
   );
