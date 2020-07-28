@@ -5,7 +5,7 @@ import expect from "expect";
 
 describe("Header component", () => {
   test("it renders the Header component with capitalized text", () => {
-    const wrapper = shallow(<Header appName='test app' />);
+    const wrapper = shallow(<Header />);
     expect(wrapper.find("h1").text()).toEqual("TEST APP");
   });
 });

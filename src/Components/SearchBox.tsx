@@ -1,10 +1,12 @@
 /** Imports */
 import React, { useState, useEffect } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
-import "./SearchBox.scss";
+import { History } from "history";
+
 import { isValidId } from "../Api/Validation";
 import { getPuuid } from "../Api/Api";
-import { History } from "history";
+
+import "./SearchBox.scss";
 
 enum errorMessages {
   NOT_FOUND = "Could not find user, please try a different name and tag combination.",

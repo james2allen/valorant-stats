@@ -1,10 +1,12 @@
 /** Imports */
 import React from "react";
-import "./App.scss";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Footer from "../Components/Footer";
 import SearchPage from "../Pages/SearchPage";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MatchList from "../Pages/MatchList";
+
+import "./App.scss";
 
 /** Main application component */
 function App() {

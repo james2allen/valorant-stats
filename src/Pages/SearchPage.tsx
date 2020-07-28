@@ -10,12 +10,14 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 function SearchPage(props: RouteComponentProps) {
   return (
     <>
-      <Header></Header>
+      <div className='col-md-12 header-container'>
+        <Header></Header>
+      </div>
       <div className='body-container'>
         <div className='container'>
           <SearchBox history={props.history}></SearchBox>
         </div>
-        <img src={ValorantBg} className='image' />
+        <img src={ValorantBg} className='search-page-background' />
       </div>
     </>
   );
