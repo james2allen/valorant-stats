@@ -1,4 +1,5 @@
 import React, { createContext, useMemo, useState, useEffect } from "react";
+import { Shard } from "../Interfaces/Account.interface";
 
 interface IAccountContext {
   account: IAccount;
@@ -19,21 +20,12 @@ interface IAccountContextProps {
   children: JSX.Element;
 }
 
-enum Shard {
-  "AP",
-  "BR",
-  "EU",
-  "KR",
-  "LATAM",
-  "NA",
-}
-
 export const AccountContext = createContext({} as IAccountContext);
 
 export const AccountContextProvider = ({ children }: IAccountContextProps) => {
   const [account, setAccount] = useState({} as IAccount);
   const [puuid, setPuuid] = useState("");
-  const [activeShard, setActiveShard] = useState(Shard.NA);
+  const [activeShard, setActiveShard] = useState(Shard.na);
   const [matchList, setMatchList] = useState();
 
   useEffect(() => {
