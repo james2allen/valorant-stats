@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useMemo,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { createContext, useMemo, useState, useEffect } from "react";
 
 interface IAccountContext {
   account: IAccount;
@@ -53,8 +47,6 @@ export const AccountContextProvider = ({ children }: IAccountContextProps) => {
   useEffect(() => {
     // get match data
   }, [activeShard]);
-
-  //   const addTodo = useCallback((id: string) => {}, [todos]);
 
   const value: IAccountContext = useMemo(() => {
     return {
