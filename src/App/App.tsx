@@ -15,6 +15,7 @@ function App() {
       <Router forceRefresh={true}>
         <Switch>
           <Route exact path='/' component={SearchPage}></Route>
+          <Route path='/account/:id' component={MatchList}></Route>
         </Switch>
       </Router>
       <Footer appName={appName}></Footer>

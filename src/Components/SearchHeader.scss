@@ -1,0 +1,13 @@
+@import '../Styles/variables.scss';
+
+.header-container {
+    background-color: $magnolia;
+    height: 110px;
+    padding-top: 50px;
+    display: flex;
+    .header-text {
+        min-width: 345px;
+        font-weight: 700;
+        color: $cerise;
+    }
+}
