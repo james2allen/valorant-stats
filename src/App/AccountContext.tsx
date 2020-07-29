@@ -1,19 +1,35 @@
 import React, { createContext, useMemo, useState, useEffect } from "react";
-import { Shard } from "../Interfaces/Account.interface";
 
-interface IAccountContext {
-  account: IAccount;
+/** Enums */
+export enum Shard {
+  "ap",
+  "br",
+  "eu",
+  "kr",
+  "latam",
+  "na",
+}
+
+/** Interfaces */
+export interface IAccountContext {
+  account: {};
   setAccount: Function;
   puuid: string;
   setPuuid: Function;
-  activeShard: Shard;
-  setActiveShard: Function;
+  shard: Shard;
+  setShard: Function;
 }
 
-export interface IAccount {
+export interface IAccountPuuid {
+  puuid: string;
   gameName: string;
   tagLine: string;
-  puuid?: string;
+}
+
+export interface IAccountShard {
+  puuid: string;
+  activeShard: Shard;
+  game: "val";
 }
 
 interface IAccountContextProps {
@@ -23,22 +39,21 @@ interface IAccountContextProps {
 export const AccountContext = createContext({} as IAccountContext);
 
 export const AccountContextProvider = ({ children }: IAccountContextProps) => {
-  const [account, setAccount] = useState({} as IAccount);
+  const [account, setAccount] = useState({});
   const [puuid, setPuuid] = useState("");
-  const [activeShard, setActiveShard] = useState(Shard.na);
-  const [matchList, setMatchList] = useState();
+  const [shard, setShard] = useState(Shard.na);
 
   useEffect(() => {
-    // get puuid
+    // get account
   }, [account]);
 
   useEffect(() => {
-    //get active shard
+    //get puuid
   }, [puuid]);
 
   useEffect(() => {
-    // get match data
-  }, [activeShard]);
+    // get shard
+  }, [shard]);
 
   const value: IAccountContext = useMemo(() => {
     return {
@@ -46,10 +61,10 @@ export const AccountContextProvider = ({ children }: IAccountContextProps) => {
       setAccount,
       puuid,
       setPuuid,
-      activeShard,
-      setActiveShard,
+      shard,
+      setShard,
     };
-  }, [account, puuid, activeShard]);
+  }, [account, puuid, shard]);
   return (
     <AccountContext.Provider value={value}>{children}</AccountContext.Provider>
   );
