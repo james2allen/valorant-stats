@@ -1,5 +1,5 @@
 import React, { createContext, useMemo, useState, useEffect } from "react";
-import { IMatchList, IMatchData } from "../Interfaces/Match.interface";
+import { IMatchList, IMatchData } from "./Match.interface";
 
 interface IMatchContext {
   matchList: IMatchList;

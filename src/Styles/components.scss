@@ -25,5 +25,17 @@
 }
 
 a:hover {
-    text-decoration:none;
+    text-decoration:none !important;
+}
+
+.dropdown-toggle.btn.btn-primary {
+    background-color: $cerise !important;
+    border-color: $cerise !important;
+    &:active {
+        background-color: $cerise !important;
+        border-color: $claret !important;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0.2rem $claret !important;
+    }
 }

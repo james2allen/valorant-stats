@@ -2,9 +2,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Footer from "../Components/Footer";
-import SearchPage from "../Pages/SearchPage";
-import MatchList from "../Pages/MatchList";
+import Footer from "./Components/Footer";
+import SearchPage from "./Account/SearchPage";
+import MatchList from "./Matches/MatchList";
 
 import "./App.scss";
 

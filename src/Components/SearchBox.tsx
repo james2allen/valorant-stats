@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import { History } from "history";
 
-import { isValidId } from "../Api/Validation";
-import { getPuuid } from "../Api/Api";
+import { isValidId } from "../Account/Validation";
+import { getPuuid } from "../Account/AccountApi";
 
 import "./SearchBox.scss";
 
@@ -54,7 +54,7 @@ export const SearchBox = (props: { history: History }) => {
 
   const getSearchClass = () => {
     if (props.history.location.pathname === "/") {
-      return "col-md-12 main-search";
+      return "main-search";
     } else {
       return "nav-search";
     }
