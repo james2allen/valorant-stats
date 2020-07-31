@@ -1,12 +1,18 @@
 /** Imports */
-import React, { useState, useEffect } from "react";
-import { AsyncTypeahead } from "react-bootstrap-typeahead";
+import React, { useState, useEffect, useContext } from "react";
+import { AsyncTypeahead, AsyncTypeaheadProps } from "react-bootstrap-typeahead";
 import { History } from "history";
 
 import { isValidId } from "../Account/Validation";
 import { getPuuid } from "../Account/AccountApi";
 
 import "./SearchBox.scss";
+import {
+  AccountContext,
+  AccountContextProvider,
+} from "../Account/AccountContext";
+import { stringify } from "querystring";
+import { useHistory } from "react-router-dom";
 
 enum errorMessages {
   NOT_FOUND = "Could not find user, please try a different name and tag combination.",
@@ -15,21 +21,34 @@ enum errorMessages {
   INVALID_FORMAT = `The format of the id you have entered is invalid, please follow the format: Name#123`,
 }
 
+interface TypeaheadOption {
+  gameName: string;
+  tagLine: string;
+  puuid: string;
+}
+
 export const SearchBox = (props: { history: History }) => {
-  const controller = new AbortController();
+  const history = useHistory();
 
   const [riotId, setRiotId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState<string[]>([]);
-  const [puuid, setPuuid] = useState("");
+  const [options, setOptions] = useState<TypeaheadOption[]>([]);
   const [errorMsg, setErrorMsg] = useState("");
 
+  const { setAccount, setPuuid } = useContext(AccountContext);
+
+  // Called by the typeahead to get the puuid of the username
   useEffect(() => {
     if (riotId.length)
       getPuuid(riotId).then((response) => {
         if (response) {
-          setPuuid(response.puuid);
-          setOptions([`${response.gameName}#${response.tagLine}`]);
+          setOptions([
+            {
+              gameName: response.gameName,
+              tagLine: response.tagLine,
+              puuid: response.puuid,
+            },
+          ]);
           setIsLoading(false);
         }
       });
@@ -47,9 +66,12 @@ export const SearchBox = (props: { history: History }) => {
     setErrorMsg("");
   };
 
-  const goToAccountPage = () => {
-    controller.abort();
-    props.history.push(`/account/${puuid}`);
+  const goToAccountPage = ([option]: TypeaheadOption[]) => {
+    setAccount({
+      ...option,
+    });
+    setPuuid(option.puuid);
+    props.history.push(`/account/${option.puuid}`);
   };
 
   const getSearchClass = () => {
@@ -69,6 +91,7 @@ export const SearchBox = (props: { history: History }) => {
           isLoading={isLoading}
           onSearch={fetchAccountData}
           options={options}
+          labelKey={(option) => `${option.gameName}#${option.tagLine}`}
           onChange={goToAccountPage}
         />
       </div>

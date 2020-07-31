@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useState, useEffect } from "react";
+import React, { createContext, useMemo, useState } from "react";
 
 /** Enums */
 export enum Shard {
@@ -12,13 +12,15 @@ export enum Shard {
 
 /** Interfaces */
 export interface IAccountContext {
-  account: {};
+  account: IAccountPuuid;
   setAccount: Function;
   puuid: string;
   setPuuid: Function;
   shard: Shard;
   setShard: Function;
 }
+
+interface IAccount {}
 
 export interface IAccountPuuid {
   puuid: string;
@@ -39,21 +41,9 @@ interface IAccountContextProps {
 export const AccountContext = createContext({} as IAccountContext);
 
 export const AccountContextProvider = ({ children }: IAccountContextProps) => {
-  const [account, setAccount] = useState({});
+  const [account, setAccount] = useState({} as IAccountPuuid);
   const [puuid, setPuuid] = useState("");
   const [shard, setShard] = useState(Shard.na);
-
-  useEffect(() => {
-    // get account
-  }, [account]);
-
-  useEffect(() => {
-    //get puuid
-  }, [puuid]);
-
-  useEffect(() => {
-    // get shard
-  }, [shard]);
 
   const value: IAccountContext = useMemo(() => {
     return {

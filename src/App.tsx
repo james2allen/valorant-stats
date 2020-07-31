@@ -7,6 +7,7 @@ import SearchPage from "./Account/SearchPage";
 import MatchList from "./Matches/MatchList";
 
 import "./App.scss";
+import { AccountContextProvider } from "./Account/AccountContext";
 
 /** Main application component */
 function App() {
@@ -14,11 +15,13 @@ function App() {
 
   return (
     <>
-      <Router forceRefresh={true}>
-        <Switch>
+      <Router>
+        <AccountContextProvider>
           <Route exact path='/' component={SearchPage}></Route>
+        </AccountContextProvider>
+        <AccountContextProvider>
           <Route path='/account/:id' component={MatchList}></Route>
-        </Switch>
+        </AccountContextProvider>
       </Router>
       <Footer appName={appName}></Footer>
     </>
