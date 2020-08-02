@@ -34,7 +34,7 @@ export interface IMatchData {
   teams: IMatchTeam[];
 
   // TODO: revisit this section when tackling round result parsing
-  roundResults: [];
+  roundResults: any[];
 }
 
 /** Match info relating to the elapsed time and the map played */

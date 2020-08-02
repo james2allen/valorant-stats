@@ -8,6 +8,7 @@ import MatchList from "./Matches/MatchList";
 
 import "./App.scss";
 import { AccountContextProvider } from "./Account/AccountContext";
+import { MatchContextProvider } from "./Matches/MatchContext";
 
 /** Main application component */
 function App() {
@@ -18,7 +19,9 @@ function App() {
       <AccountContextProvider>
         <Router>
           <Route exact path='/' component={SearchPage}></Route>
+          <MatchContextProvider>
             <Route path='/account/:id' component={MatchList}></Route>
+          </MatchContextProvider>
         </Router>
       </AccountContextProvider>
       <Footer appName={appName}></Footer>
