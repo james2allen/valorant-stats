@@ -1,4 +1,5 @@
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useMemo, useState, useEffect } from "react";
+import { getShard, getAccountByPuuid } from "./AccountApi";
 
 /** Enums */
 export enum Shard {
@@ -19,8 +20,6 @@ export interface IAccountContext {
   shard: Shard;
   setShard: Function;
 }
-
-interface IAccount {}
 
 export interface IAccountPuuid {
   puuid: string;
@@ -44,6 +43,20 @@ export const AccountContextProvider = ({ children }: IAccountContextProps) => {
   const [account, setAccount] = useState({} as IAccountPuuid);
   const [puuid, setPuuid] = useState("");
   const [shard, setShard] = useState(Shard.na);
+
+  // On update puuid, get account data if missing & get shard for user if missing
+  useEffect(() => {
+    if (!puuid) return;
+
+    if (!account.gameName || !account.tagLine) {
+      getAccountByPuuid(puuid).then((response: IAccountPuuid) => {
+        setAccount(response);
+      });
+    }
+    getShard(puuid).then((response: IAccountShard) => {
+      setShard(response.activeShard);
+    });
+  }, [puuid]);
 
   const value: IAccountContext = useMemo(() => {
     return {

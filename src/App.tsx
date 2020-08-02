@@ -1,6 +1,6 @@
 /** Imports */
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Footer from "./Components/Footer";
 import SearchPage from "./Account/SearchPage";
@@ -15,14 +15,12 @@ function App() {
 
   return (
     <>
-      <Router>
-        <AccountContextProvider>
+      <AccountContextProvider>
+        <Router>
           <Route exact path='/' component={SearchPage}></Route>
-        </AccountContextProvider>
-        <AccountContextProvider>
-          <Route path='/account/:id' component={MatchList}></Route>
-        </AccountContextProvider>
-      </Router>
+            <Route path='/account/:id' component={MatchList}></Route>
+        </Router>
+      </AccountContextProvider>
       <Footer appName={appName}></Footer>
     </>
   );
