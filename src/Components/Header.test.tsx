@@ -1,7 +1,7 @@
-import React from "react";
+import React from "./node_modules/react";
 import Header from "./Header";
-import { shallow } from "enzyme";
-import expect from "expect";
+import { shallow } from "./node_modules/enzyme";
+import expect from "./node_modules/expect";
 
 describe("Header component", () => {
   test("it renders the Header component with capitalized text", () => {

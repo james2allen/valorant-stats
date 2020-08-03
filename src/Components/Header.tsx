@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../Styles/components.scss";
+import "../styles/components.scss";
 
 function Header() {
   function convertAppName(appName: string) {

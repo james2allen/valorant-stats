@@ -3,7 +3,7 @@ import {
   Team,
   GameMap,
   GameMode,
-} from "../Matches/Match.interface";
+} from "../matches/Match.interface";
 
 export const matchData: IMatchData = {
   matchInfo: {

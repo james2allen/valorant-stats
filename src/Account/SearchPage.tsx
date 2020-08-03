@@ -1,9 +1,9 @@
 /** Imports */
 import React from "react";
-import { SearchBox } from "../Components/SearchBox";
-import ValorantBg from "../Images/valorant.png";
+import { SearchBox } from "../components/SearchBox";
+import ValorantBg from "../images/valorant.png";
 import "./SearchPage.scss";
-import Header from "../Components/Header";
+import Header from "../components/Header";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
 /** Body component */
@@ -15,7 +15,7 @@ function SearchPage(props: RouteComponentProps) {
       </div>
       <div className='body-container'>
         <div className='container'>
-          <SearchBox history={props.history}></SearchBox>
+          <SearchBox></SearchBox>
         </div>
         <img
           src={ValorantBg}

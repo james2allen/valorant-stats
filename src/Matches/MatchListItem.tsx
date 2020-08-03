@@ -2,7 +2,7 @@
 import React, { useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import "./MatchList.scss";
-import { AccountContext } from "../Account/AccountContext";
+import { AccountContext } from "../account/AccountContext";
 import { MatchContext } from "./MatchContext";
 import { IMatchList, IMatchData, GameMap, GameMaps } from "./Match.interface";
 

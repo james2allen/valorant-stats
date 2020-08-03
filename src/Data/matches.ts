@@ -1,4 +1,4 @@
-import { IMatchList, Team } from "../Matches/Match.interface";
+import { IMatchList, Team } from "../matches/Match.interface";
 
 export const matchData: IMatchList = {
   puuid:

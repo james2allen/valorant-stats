@@ -1,13 +1,12 @@
 /** Imports */
 import React, { useState, useEffect, useContext } from "react";
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
-import { History } from "history";
 
-import { isValidId } from "../Account/Validation";
-import { getPuuid } from "../Account/AccountApi";
+import { isValidId } from "../account/Validation";
+import { getPuuid } from "../account/AccountApi";
 
 import "./SearchBox.scss";
-import { AccountContext } from "../Account/AccountContext";
+import { AccountContext } from "../account/AccountContext";
 import { useHistory } from "react-router-dom";
 
 enum errorMessages {
@@ -23,7 +22,7 @@ interface TypeaheadOption {
   puuid: string;
 }
 
-export const SearchBox = (props: { history: History }) => {
+export const SearchBox = () => {
   const history = useHistory();
 
   const [riotId, setRiotId] = useState("");
@@ -71,7 +70,7 @@ export const SearchBox = (props: { history: History }) => {
   };
 
   const getSearchClass = () => {
-    if (props.history.location.pathname === "/") {
+    if (history.location.pathname === "/") {
       return "main-search";
     } else {
       return "nav-search";

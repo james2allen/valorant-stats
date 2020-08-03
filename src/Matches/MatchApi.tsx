@@ -1,7 +1,7 @@
 import { IMatchList, IMatchData } from "./Match.interface";
 import matchList from "../data/matches";
 import matchData from "../data/match";
-import { Shard } from "../Account/AccountContext";
+import { Shard } from "../account/AccountContext";
 
 export const getMatchList = (
   puuid: string,

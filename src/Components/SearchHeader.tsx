@@ -5,13 +5,13 @@ import { SearchBox } from "./SearchBox";
 import { History } from "history";
 import Header from "./Header";
 
-import "../Styles/components.scss";
+import "../styles/components.scss";
 
-function SearchHeader(props: { history: History }) {
+function SearchHeader() {
   return (
     <>
       <Header></Header>
-      <SearchBox history={props.history}></SearchBox>
+      <SearchBox></SearchBox>
     </>
   );
 }

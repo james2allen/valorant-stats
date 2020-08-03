@@ -2,13 +2,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Footer from "./Components/Footer";
-import SearchPage from "./Account/SearchPage";
-import MatchList from "./Matches/MatchList";
+import Footer from "./components/Footer";
+import SearchPage from "./account/SearchPage";
+import MatchList from "./matches/MatchList";
 
 import "./App.scss";
-import { AccountContextProvider } from "./Account/AccountContext";
-import { MatchContextProvider } from "./Matches/MatchContext";
+import { AccountContextProvider } from "./account/AccountContext";
+import { MatchContextProvider } from "./matches/MatchContext";
 
 /** Main application component */
 function App() {

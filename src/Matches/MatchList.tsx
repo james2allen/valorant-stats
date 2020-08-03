@@ -6,16 +6,16 @@ import {
   useHistory,
   useLocation,
 } from "react-router-dom";
-import ValorantBg from "../Images/valorant.png";
+import ValorantBg from "../images/valorant.png";
 import "./MatchList.scss";
-import SearchHeader from "../Components/SearchHeader";
-import { AccountContext } from "../Account/AccountContext";
+import SearchHeader from "../components/SearchHeader";
+import { AccountContext } from "../account/AccountContext";
 import { MatchContext } from "./MatchContext";
 import { getMatchList } from "./MatchApi";
 import MatchListItem from "./MatchListItem";
 
 /** Body component */
-function MatchList(props: RouteComponentProps) {
+function MatchList() {
   const location = useLocation();
   const history = useHistory();
   const { puuid, setPuuid, shard } = useContext(AccountContext);
@@ -50,7 +50,7 @@ function MatchList(props: RouteComponentProps) {
   return (
     <>
       <div className='col-md-12 header-container'>
-        <SearchHeader history={props.history}></SearchHeader>
+        <SearchHeader></SearchHeader>
       </div>
       <div className='body-container'>
         <div className='container'>{views}</div>

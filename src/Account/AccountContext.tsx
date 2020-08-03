@@ -1,5 +1,5 @@
-import React, { createContext, useMemo, useState, useEffect } from "react";
 import { getShard, getAccountByPuuid } from "./AccountApi";
+import React, { useState, createContext, useMemo, useEffect } from "react";
 
 /** Enums */
 export enum Shard {

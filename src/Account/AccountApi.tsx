@@ -1,4 +1,4 @@
-import { IAccountShard, IAccountPuuid } from "./AccountContext";
+import { IAccountPuuid, IAccountShard } from "./AccountContext";
 
 export const getPuuid = (riotId: string): Promise<IAccountPuuid> => {
   const [gameName, tagLine] = riotId.split("#");
