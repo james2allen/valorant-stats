@@ -1,5 +1,5 @@
 /** Imports */
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import {
   RouteComponentProps,
   withRouter,
@@ -12,6 +12,7 @@ import SearchHeader from "../Components/SearchHeader";
 import { AccountContext } from "../Account/AccountContext";
 import { MatchContext } from "./MatchContext";
 import { getMatchList } from "./MatchApi";
+import MatchListItem from "./MatchListItem";
 
 /** Body component */
 function MatchList(props: RouteComponentProps) {
@@ -19,6 +20,7 @@ function MatchList(props: RouteComponentProps) {
   const history = useHistory();
   const { puuid, setPuuid, shard } = useContext(AccountContext);
   const { setMatchList, matchList, matchData } = useContext(MatchContext);
+  const [views, setViews] = useState<JSX.Element>(<></>);
 
   //On first load pull puuid from location if missing
   useEffect(() => {
@@ -28,11 +30,22 @@ function MatchList(props: RouteComponentProps) {
     }
   }, []);
 
+  // Get the expanded list of match related stuff
   useEffect(() => {
     getMatchList(puuid, shard).then((matchList) => {
       setMatchList(matchList);
     });
   }, [shard]);
+
+  useEffect(() => {
+    setViews(
+      <>
+        {matchData.map((match) => (
+          <MatchListItem match={match}></MatchListItem>
+        ))}
+      </>
+    );
+  }, [matchData]);
 
   return (
     <>
@@ -40,7 +53,7 @@ function MatchList(props: RouteComponentProps) {
         <SearchHeader history={props.history}></SearchHeader>
       </div>
       <div className='body-container'>
-        <div className='container'></div>
+        <div className='container'>{views}</div>
         <img src={ValorantBg} className='match-list-background' />
       </div>
     </>

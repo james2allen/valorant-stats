@@ -17,7 +17,11 @@ function SearchPage(props: RouteComponentProps) {
         <div className='container'>
           <SearchBox history={props.history}></SearchBox>
         </div>
-        <img src={ValorantBg} className='search-page-background' />
+        <img
+          src={ValorantBg}
+          alt-text='Valorant Splash'
+          className='search-page-background'
+        />
       </div>
     </>
   );

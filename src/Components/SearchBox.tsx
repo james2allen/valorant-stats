@@ -1,17 +1,13 @@
 /** Imports */
 import React, { useState, useEffect, useContext } from "react";
-import { AsyncTypeahead, AsyncTypeaheadProps } from "react-bootstrap-typeahead";
+import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import { History } from "history";
 
 import { isValidId } from "../Account/Validation";
 import { getPuuid } from "../Account/AccountApi";
 
 import "./SearchBox.scss";
-import {
-  AccountContext,
-  AccountContextProvider,
-} from "../Account/AccountContext";
-import { stringify } from "querystring";
+import { AccountContext } from "../Account/AccountContext";
 import { useHistory } from "react-router-dom";
 
 enum errorMessages {
@@ -71,7 +67,7 @@ export const SearchBox = (props: { history: History }) => {
       ...option,
     });
     setPuuid(option.puuid);
-    props.history.push(`/account/${option.puuid}`);
+    history.push(`/account/${option.puuid}`);
   };
 
   const getSearchClass = () => {

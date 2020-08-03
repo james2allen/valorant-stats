@@ -4,13 +4,15 @@ export enum Team {
   "Blue",
 }
 
-export enum Map {
+export enum GameMap {
   Split = "/Game/Maps/Bonsai/Bonsai",
 }
 
 export enum GameMode {
   Normal = "/Game/GameModes/Bomb/BombGameMode.BombGameMode_C",
 }
+
+export const GameMaps = new Map<GameMap, string>([[GameMap.Split, "Split"]]);
 
 /** Interfaces */
 
@@ -40,7 +42,7 @@ export interface IMatchData {
 /** Match info relating to the elapsed time and the map played */
 export interface IMatchInfo {
   matchId: string;
-  mapId: Map;
+  mapId: GameMap;
   gameLengthMillis: number;
   gameStartMillis: number;
   provisioningFlowId: string;
