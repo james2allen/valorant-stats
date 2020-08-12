@@ -11,15 +11,17 @@ import "./MatchList.scss";
 import SearchHeader from "../components/SearchHeader";
 import { AccountContext } from "../account/AccountContext";
 import { MatchContext } from "./MatchContext";
-import { getMatchList } from "./MatchApi";
+import { getMatchList, getMatchData } from "./MatchApi";
 import MatchListItem from "./MatchListItem";
 
 /** Body component */
 function MatchList() {
   const location = useLocation();
   const history = useHistory();
-  const { puuid, setPuuid, shard } = useContext(AccountContext);
-  const { setMatchList, matchList, matchData } = useContext(MatchContext);
+  const { puuid, setPuuid, shard, account } = useContext(AccountContext);
+  const { setMatchList, matchList, matchData, setMatchData } = useContext(
+    MatchContext
+  );
   const [views, setViews] = useState<JSX.Element>(<></>);
 
   //On first load pull puuid from location if missing
@@ -37,11 +39,25 @@ function MatchList() {
     });
   }, [shard]);
 
+  // Move this back into match context when actually connected to riot API
+  // Fetches match list in better detail
+  useEffect(() => {
+    if (!matchList.history) return;
+    Promise.all(
+      matchList.history.map((match) => getMatchData(match.matchId, puuid))
+    ).then((matchListData) => {
+      setMatchData(matchListData);
+    });
+  }, [matchList]);
+
+  // Generates the match list based on the pulled match data
   useEffect(() => {
     setViews(
       <>
         {matchData.map((match) => (
-          <MatchListItem match={match}></MatchListItem>
+          <MatchListItem
+            key={`match-key-${match.matchInfo.matchId}`}
+            match={match}></MatchListItem>
         ))}
       </>
     );
@@ -53,7 +69,19 @@ function MatchList() {
         <SearchHeader></SearchHeader>
       </div>
       <div className='body-container'>
-        <div className='container'>{views}</div>
+        <div className='container'>
+          <div className='row p-0'>
+            <div className='col-md-4'>
+              <h1>
+                {account.gameName}#{account.tagLine}
+              </h1>
+            </div>
+            <div className='col-md-8'>
+              <h1 className='ml-4'>Matches</h1>
+              {views}
+            </div>
+          </div>
+        </div>
         <img src={ValorantBg} className='match-list-background' />
       </div>
     </>

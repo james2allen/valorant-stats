@@ -7,12 +7,48 @@
 }
 
 .matchlist-item {
-    height: 50px;
-    width: 500px;
-    background-color: white;
+    display: block;
+    border-radius: 5px;
+    height: 75px;
+    width: 100%;
+    font-size: 40px;
+    padding-left: 50px !important;
+    font-weight: 700;
+    color: white !important;
     padding: 10px;
+    cursor: pointer;
 }
 
 .container {
     margin-bottom: 70px;
+}
+
+.match-player-detail {
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    padding: 3px 10px;
+}
+
+.match-player-win {
+    background-color: $fern-green;
+}
+
+.match-player-lose {
+    background-color: $wine;
+}
+
+.card-body {
+    background-color: $eggplant;
+    border-color: $xiketic;
+}
+
+.card {
+    border-radius: 5px;
+    border-color: $eggplant !important;
+}
+
+h1 {
+    color: $magnolia;
 }

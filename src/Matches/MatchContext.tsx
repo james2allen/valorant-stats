@@ -19,15 +19,6 @@ export const MatchContextProvider = ({ children }: IMatchListContextProps) => {
   const [matchList, setMatchList] = useState({} as IMatchList);
   const [matchData, setMatchData] = useState<IMatchData[]>([]);
 
-  useEffect(() => {
-    if (!matchList.history) return;
-    Promise.all(
-      matchList.history.map((match) => getMatchData(match.matchId))
-    ).then((matchListData) => {
-      setMatchData(matchListData);
-    });
-  }, [matchList]);
-
   const value: IMatchContext = useMemo(() => {
     return {
       matchList,

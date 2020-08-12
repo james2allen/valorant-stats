@@ -1,4 +1,5 @@
 import faker from "faker";
+import { IAccountPuuid } from "../account/AccountContext";
 
 /** Enums */
 export enum Team {
@@ -48,12 +49,12 @@ export class IMatchData {
   // TODO: revisit this section when tackling round result parsing
   roundResults: any[];
 
-  constructor() {
+  constructor(puuid?: string) {
     const roundsPlayed = randInt(13, 25);
     const playtimeMillis = randInt(600000, 1800000);
     this.matchInfo = new IMatchInfo(playtimeMillis);
     this.players = [
-      new IMatchPlayer(roundsPlayed, playtimeMillis, Team.Red),
+      new IMatchPlayer(roundsPlayed, playtimeMillis, Team.Red, puuid),
       new IMatchPlayer(roundsPlayed, playtimeMillis, Team.Red),
       new IMatchPlayer(roundsPlayed, playtimeMillis, Team.Red),
       new IMatchPlayer(roundsPlayed, playtimeMillis, Team.Red),
@@ -155,6 +156,7 @@ export class IMatchPlayerStats {
 
 /** Each player that is involved in the match */
 export class IMatchPlayer {
+  gameName?: string;
   puuid: string;
   teamId: Team;
   partyId: string;
@@ -177,6 +179,7 @@ export class IMatchPlayer {
     this.competitiveTier = randInt(0, 9);
     this.playerCard = faker.random.uuid();
     this.playerTitle = faker.random.uuid();
+    this.gameName = faker.internet.userName();
   }
 }
 

@@ -2,6 +2,7 @@ import { IMatchList, IMatchData } from "./Match.interface";
 import matchList from "../data/matches";
 import matchData from "../data/match";
 import { Shard } from "../account/AccountContext";
+import { cloneDeep } from "lodash";
 
 export const getMatchList = (
   puuid: string,
@@ -10,6 +11,9 @@ export const getMatchList = (
   return Promise.resolve(matchList);
 };
 
-export const getMatchData = (matchId: string): Promise<IMatchData> => {
-  return Promise.resolve(matchData);
+export const getMatchData = (
+  matchId: string,
+  puuid: string
+): Promise<IMatchData> => {
+  return Promise.resolve(new IMatchData(puuid));
 };
