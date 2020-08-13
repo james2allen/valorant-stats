@@ -1,20 +1,19 @@
 /** Imports */
 import React, { useEffect, useContext, useState } from "react";
-import {
-  RouteComponentProps,
-  withRouter,
-  useHistory,
-  useLocation,
-} from "react-router-dom";
+import { withRouter, useHistory, useLocation } from "react-router-dom";
+
 import ValorantBg from "../images/valorant.png";
+import PlayerCard from "../images/default_player_card.png";
+
 import "./MatchList.scss";
+
 import SearchHeader from "../components/SearchHeader";
 import { AccountContext } from "../account/AccountContext";
 import { MatchContext } from "./MatchContext";
 import { getMatchList, getMatchData } from "./MatchApi";
 import MatchListItem from "./MatchListItem";
+import RankDisplay from "./RankDisplay";
 
-/** Body component */
 function MatchList() {
   const location = useLocation();
   const history = useHistory();
@@ -81,6 +80,11 @@ function MatchList() {
               </div>
               <div className='row'>
                 <img src={PlayerCard} className='player-card'></img>
+              </div>
+              <div className='row'>
+                <div className='rank-container'>
+                  <RankDisplay rank='gold_2' size={90}></RankDisplay>
+                </div>
               </div>
             </div>
             <div className='col-md-8'>

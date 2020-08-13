@@ -1,18 +1,16 @@
 /** Imports */
 import React, { useEffect, useContext, useState } from "react";
-import { useLocation } from "react-router-dom";
 import "./MatchList.scss";
 import { AccountContext } from "../account/AccountContext";
 import { MatchContext } from "./MatchContext";
-import { Collapse, Button, CardBody, Card } from "reactstrap";
-import { IMatchList, IMatchData, GameMap, GameMaps } from "./Match.interface";
+import { Collapse, CardBody, Card } from "reactstrap";
+import { IMatchData } from "./Match.interface";
 import MatchPlayerDetails from "./MatchPlayerDetails";
 
 interface MatchListItemProps {
   match: IMatchData;
 }
 
-/** Body component */
 function MatchListItem({ match }: MatchListItemProps) {
   const { matchInfo, players, teams } = match;
   const { account } = useContext(AccountContext);
@@ -42,7 +40,10 @@ function MatchListItem({ match }: MatchListItemProps) {
             <div className='row'>
               <div className='col-md-6'>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[0]}
+                  matchPlayer={{
+                    ...match.players[0],
+                    gameName: `${account.gameName}#${account.puuid}`,
+                  }}
                   won={match.teams[0].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
                   matchPlayer={match.players[1]}
