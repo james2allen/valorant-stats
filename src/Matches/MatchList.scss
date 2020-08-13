@@ -52,3 +52,11 @@
 h1 {
     color: $magnolia;
 }
+
+.player-card {
+    object-fit: contain;
+    height: 400px;
+    margin-left: 30px;
+    margin-top: 15px;
+    clip-path: inset(0 0% 32% 0%);
+}

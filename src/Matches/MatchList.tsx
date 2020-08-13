@@ -72,12 +72,19 @@ function MatchList() {
         <div className='container'>
           <div className='row p-0'>
             <div className='col-md-4'>
-              <h1>
-                {account.gameName}#{account.tagLine}
-              </h1>
+              <div className='row'>
+                <h1>
+                  {account.gameName
+                    ? `${account.gameName}#${account.tagLine}`
+                    : "NOT_FOUND"}
+                </h1>
+              </div>
+              <div className='row'>
+                <img src={PlayerCard} className='player-card'></img>
+              </div>
             </div>
             <div className='col-md-8'>
-              <h1 className='ml-4'>Matches</h1>
+              <h1 className='ml-4'>Recent Matches</h1>
               {views}
             </div>
           </div>
