@@ -69,27 +69,27 @@ function MatchList() {
       </div>
       <div className='body-container'>
         <div className='container'>
-          <div className='row p-0'>
-            <div className='col-md-4'>
-              <div className='row'>
-                <h1>
-                  {account.gameName
-                    ? `${account.gameName}#${account.tagLine}`
-                    : "NOT_FOUND"}
-                </h1>
-              </div>
-              <div className='row'>
-                <img src={PlayerCard} className='player-card'></img>
-              </div>
-              <div className='row'>
-                <div className='rank-container'>
-                  <RankDisplay rank='gold_2' size={90}></RankDisplay>
-                </div>
+          <div className='row'>
+            <div className='col-md-12 profile-name-banner'>
+              <img src={PlayerCard} className='player-card'></img>
+              <h1>
+                {account.gameName
+                  ? `${account.gameName}#${account.tagLine}`
+                  : "NOT_FOUND"}
+              </h1>
+              <div className='ml-4'>
+                <RankDisplay rank='gold_2' size={60}></RankDisplay>
               </div>
             </div>
+          </div>
+          <div className='row p-0'>
+            <div className='col-md-4 profile-column'></div>
+
             <div className='col-md-8'>
-              <h1 className='ml-4'>Recent Matches</h1>
-              {views}
+              <div className='recent-matches-column'>
+                <h1 className='recent-matches ml-4'>Recent Matches</h1>
+                {views}
+              </div>
             </div>
           </div>
         </div>

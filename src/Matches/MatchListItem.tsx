@@ -42,7 +42,7 @@ function MatchListItem({ match }: MatchListItemProps) {
                 <MatchPlayerDetails
                   matchPlayer={{
                     ...match.players[0],
-                    gameName: `${account.gameName}#${account.puuid}`,
+                    gameName: `${account.gameName}#${account.tagLine}`,
                   }}
                   won={match.teams[0].won}></MatchPlayerDetails>
                 <MatchPlayerDetails

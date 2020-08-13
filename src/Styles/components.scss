@@ -22,11 +22,14 @@
 
 .header-container {
     background-color: $magnolia;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
     height: $navbar-height;
     padding-top: 50px;
     display: flex;
     .header-text {
-        min-width: 345px;
+        font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+        font-weight: 600;
+        min-width: 348px;
         font-weight: 700;
         color: $cerise;
     }
