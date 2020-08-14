@@ -1,14 +1,14 @@
 import {
   IMatchData,
   Team,
-  GameMap,
+  GameMapName,
   GameMode,
 } from "../matches/Match.interface";
 
 export const matchData: IMatchData = {
   matchInfo: {
     matchId: "714838f4-5011-41a0-b249-2e4f5ae0240b",
-    mapId: GameMap.Split,
+    mapId: GameMapName.Split,
     gameLengthMillis: 2466940,
     gameStartMillis: 1591939374724,
     provisioningFlowId: "Matchmaking",

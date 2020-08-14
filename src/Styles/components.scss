@@ -21,6 +21,7 @@
 }
 
 .header-container {
+    position: absolute;
     background-color: $magnolia;
     box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
     height: $navbar-height;

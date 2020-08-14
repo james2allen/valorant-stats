@@ -14,15 +14,23 @@
     border-right: 1px solid $magnolia;
 }
 
+.matchlist-item__container {
+    display: flex;
+    flex-direction: row;
+}
+
 .matchlist-item {
-    display: block;
-    height: 75px;
-    width: 100%;
+    margin-left: 5px;
+    display: flex;
+    height: 120px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
     font-size: 40px;
     padding-left: 50px !important;
     font-weight: 700;
     color: white !important;
-    padding: 10px;
     cursor: pointer;
 }
 
@@ -39,10 +47,22 @@
 }
 
 .match-player-win {
-    background-color: $fern-green;
+    background-color: #1B381A;
 }
 
 .match-player-lose {
+    background-color: #5C252B;
+}
+
+.row-decoration-win {
+    width: 10px;
+    height: 120px;
+    background-color: $fern-green
+}
+
+.row-decoration-lose {
+    width: 10px;
+    height: 120px;
     background-color: $wine;
 }
 
@@ -71,17 +91,20 @@ h1 {
 }
 
 .profile-column {
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
+    // border: 1px solid #6E2134;
     border: 1px solid #6E2134;
+    border-left: none;
+    border-bottom: none;
 }
 
 .recent-matches-column {
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
     width: 100%;
     border: 1px solid #6E2134;
+    border-right: none;
+    border-bottom: none;
     padding: 20px;
     h1 {
         @include info;
@@ -100,5 +123,11 @@ h1 {
     h1 {
         @include info;
     }
+}
+
+.game-map {
+    height: 120px;
+    width: auto;
+    clip-path: polygon(30% 0%, 100% 0, 100% 100%, 0% 100%);
 }
 

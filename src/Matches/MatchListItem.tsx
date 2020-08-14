@@ -4,7 +4,7 @@ import "./MatchList.scss";
 import { AccountContext } from "../account/AccountContext";
 import { MatchContext } from "./MatchContext";
 import { Collapse, CardBody, Card } from "reactstrap";
-import { IMatchData } from "./Match.interface";
+import { IMatchData, GameMaps } from "./Match.interface";
 import MatchPlayerDetails from "./MatchPlayerDetails";
 
 interface MatchListItemProps {
@@ -23,17 +23,32 @@ function MatchListItem({ match }: MatchListItemProps) {
     console.log(match);
   });
 
+  const getGameMapDisplay = (match: IMatchData) => {
+    return (
+      <img
+        className='game-map'
+        src={GameMaps.get(match.matchInfo.mapId)?.map}></img>
+    );
+  };
+
   return (
     <>
-      <p className='mt-3 mb-1'>
-        <a
-          className={`matchlist-item match-player-${
-            match.teams[0].won ? "win" : "lose"
-          }`}
-          onClick={toggleMatchList}>
-          {match.teams[0].roundsWon} - {match.teams[1].roundsWon}
-        </a>
-      </p>
+      <div className='mt-3 mb-1'>
+        <div className='matchlist-item__container' onClick={toggleMatchList}>
+          <div
+            className={`row-decoration-${
+              match.teams[0].won ? "win" : "lose"
+            }`}></div>
+
+          <div
+            className={`matchlist-item match-player-${
+              match.teams[0].won ? "win" : "lose"
+            }`}>
+            {match.teams[0].roundsWon} - {match.teams[1].roundsWon}
+            {getGameMapDisplay(match)}
+          </div>
+        </div>
+      </div>
       <Collapse isOpen={isOpen}>
         <Card>
           <CardBody>

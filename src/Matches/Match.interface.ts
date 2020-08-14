@@ -1,5 +1,9 @@
 import faker from "faker";
 import { IAccountPuuid } from "../account/AccountContext";
+import Ascent from "../images/maps/ascent.png";
+import Bind from "../images/maps/bind.png";
+import Haven from "../images/maps/haven.png";
+import Split from "../images/maps/split.png";
 
 /** Enums */
 export enum Team {
@@ -7,7 +11,7 @@ export enum Team {
   "Blue",
 }
 
-export enum GameMap {
+export enum GameMapName {
   Split = "/Game/Maps/Bonsai/Bonsai",
   Ascent = "/Game/Maps/Bonsai/Ascent",
   Bind = "/Game/Maps/Bonsai/Duality",
@@ -18,14 +22,19 @@ export enum GameMode {
   Normal = "/Game/GameModes/Bomb/BombGameMode.BombGameMode_C",
 }
 
-export const GameMaps = new Map<GameMap, string>([
-  [GameMap.Split, "Split"],
-  [GameMap.Ascent, "Ascent"],
-  [GameMap.Bind, "Bind"],
-  [GameMap.Haven, "Haven"],
+export const GameMaps = new Map<GameMapName, GameMap>([
+  [GameMapName.Split, { name: "Split", map: Split }],
+  [GameMapName.Ascent, { name: "Ascent", map: Ascent }],
+  [GameMapName.Bind, { name: "Bind", map: Bind }],
+  [GameMapName.Haven, { name: "Haven", map: Haven }],
 ]);
 
 /** Interfaces */
+
+interface GameMap {
+  name: string;
+  map: string;
+}
 
 /** Small representation of a match to be used in displaying the recent matches a player has played */
 export interface IMatch {
@@ -88,7 +97,7 @@ export class IMatchData {
 /** Match info relating to the elapsed time and the map played */
 export class IMatchInfo {
   matchId: string;
-  mapId: GameMap;
+  mapId: GameMapName;
   gameLengthMillis: number;
   gameStartMillis: number;
   provisioningFlowId: string;
@@ -101,9 +110,12 @@ export class IMatchInfo {
 
   constructor(playTimeMillis: number) {
     this.matchId = faker.random.uuid();
-    this.mapId = [GameMap.Split, GameMap.Haven, GameMap.Bind, GameMap.Ascent][
-      randInt(0, 3)
-    ];
+    this.mapId = [
+      GameMapName.Split,
+      GameMapName.Haven,
+      GameMapName.Bind,
+      GameMapName.Ascent,
+    ][randInt(0, 3)];
 
     this.gameLengthMillis = playTimeMillis;
     this.gameStartMillis = faker.date.past(2020).getMilliseconds();
