@@ -61,33 +61,33 @@ function MatchListItem({ match }: MatchListItemProps) {
                   }}
                   won={match.teams[0].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[1]}
+                  matchPlayer={players[1]}
                   won={match.teams[0].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[2]}
+                  matchPlayer={players[2]}
                   won={match.teams[0].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[3]}
+                  matchPlayer={players[3]}
                   won={match.teams[0].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[4]}
+                  matchPlayer={players[4]}
                   won={match.teams[0].won}></MatchPlayerDetails>
               </div>
               <div className='col-md-6'>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[5]}
+                  matchPlayer={players[5]}
                   won={match.teams[1].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[6]}
+                  matchPlayer={players[6]}
                   won={match.teams[1].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[7]}
+                  matchPlayer={players[7]}
                   won={match.teams[1].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[8]}
+                  matchPlayer={players[8]}
                   won={match.teams[1].won}></MatchPlayerDetails>
                 <MatchPlayerDetails
-                  matchPlayer={match.players[9]}
+                  matchPlayer={players[9]}
                   won={match.teams[1].won}></MatchPlayerDetails>
               </div>
             </div>

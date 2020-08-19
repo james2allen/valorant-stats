@@ -21,7 +21,8 @@
 }
 
 .header-container {
-    position: absolute;
+    position: fixed !important;
+    z-index:9999;
     background-color: $magnolia;
     box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
     height: $navbar-height;
@@ -54,4 +55,12 @@ a:hover {
 
 body {
     background-color: $dark-sienna !important;
+}
+
+img {
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }

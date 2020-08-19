@@ -1,7 +1,6 @@
 /** Imports */
 import React, { useEffect, useContext, useState } from "react";
 import "./MatchList.scss";
-import { MatchContext } from "./MatchContext";
 import { IMatchPlayer } from "./Match.interface";
 import { AccountContext } from "../account/AccountContext";
 

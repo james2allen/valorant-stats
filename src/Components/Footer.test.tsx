@@ -1,6 +1,6 @@
-import React from "./node_modules/react";
+import React from "react";
 import Footer from "./Footer";
-import { shallow } from "./node_modules/enzyme";
+import { shallow } from "enzyme";
 
 test("renders footer", () => {
   const wrapper = shallow(<Footer appName='test app' />);
