@@ -65,7 +65,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
     "lodash": "^4.17.19",
-    "mocha": "^8.0.1",
+    "mocha": "^8.4.0",
     "react-addons-test-utils": "^15.6.2"
   }
 }
